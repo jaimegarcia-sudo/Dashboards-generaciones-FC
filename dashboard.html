@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard de Cursos - Control de Progreso</title>
+    <!-- Tailwind CSS para estilos modernos, limpios y completamente responsivos -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Importación de la fuente Inter para un acabado de alta calidad -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body class="bg-slate-100 min-h-screen flex flex-col justify-between p-4 md:p-8">
+
+    <!-- Contenedor Principal (Optimizado a max-w-7xl para 4 columnas) -->
+    <div class="max-w-7xl w-full mx-auto my-auto space-y-8">
+        
+        <!-- Encabezado de la página -->
+        <div class="text-center md:text-left mb-2">
+            <h1 class="text-2xl md:text-3xl font-extrabold text-slate-800 tracking-tight">Panel de Control de Clases</h1>
+            <p class="text-slate-500 text-sm mt-1">Monitoreo de asistencia, calendarios y niveles académicos en tiempo real.</p>
+        </div>
+
+        <!-- Replicador de Tarjetas (Diseño de Alta Fidelidad de 4 Columnas) -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+
+            <!-- TARJETA 1: GENERACIÓN #27 (Tema Rosa/Rojo - Duplicado Base) -->
+            <div class="bg-white rounded-[24px] shadow-sm border border-slate-100 overflow-hidden flex flex-col justify-between min-h-[320px] transition-all duration-300 hover:shadow-md">
+                <div class="p-6 flex-grow">
+                    <!-- Insignia / Badge Superior (Dinámica) -->
+                    <span id="c1-badge-display" class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-extrabold bg-red-50 text-red-700 uppercase tracking-wider mb-4">
+                        GENERACIÓN #27
+                    </span>
+                    <!-- Título del Curso (Dinámico) -->
+                    <h2 id="c1-curso-display" class="text-xl font-black text-slate-800 tracking-tight mb-1">
+                        Curso: B1 a B2
+                    </h2>
+                    <!-- Módulo -->
+                    <p class="text-slate-400 font-bold text-sm mb-6">Módulo #4</p>
+
+                    <!-- Lista de Datos Clave -->
+                    <div class="space-y-4">
+                        <!-- Fila: Calendario -->
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                                <span class="text-slate-500 font-medium">Calendario</span>
+                            </div>
+                            <span id="c1-semana-display" class="text-slate-800 font-extrabold text-base">Semana 3</span>
+                        </div>
+                        <!-- Fila: Nivel Asignado -->
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                                <span class="text-slate-500 font-medium">Nivel Asignado</span>
+                            </div>
+                            <span class="text-slate-800 font-extrabold">B1 a B2 (Intermedio)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer de la Tarjeta (Total Alumnos) -->
+                <div class="bg-[#f3f7fc] px-6 py-4 flex items-center justify-between border-t border-slate-100">
+                    <span class="text-slate-500 font-semibold text-sm">Total Alumnos:</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-slate-800 font-bold text-sm shadow-sm border border-slate-100">
+                        <svg class="w-4 h-4 text-sky-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span id="c1-alumnos-display">40 Alumnos</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- TARJETA 2: ADV. SPOKEN COURSE (Tema Ámbar/Ocre) -->
+            <div class="bg-white rounded-[24px] shadow-sm border border-slate-100 overflow-hidden flex flex-col justify-between min-h-[320px] transition-all duration-300 hover:shadow-md">
+                <div class="p-6 flex-grow">
+                    <!-- Insignia / Badge Superior (Dinámica) -->
+                    <span id="c2-badge-display" class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-extrabold bg-amber-50 text-amber-700 uppercase tracking-wider mb-4">
+                        ADV. SPOKEN COURSE
+                    </span>
+                    <!-- Título del Curso (Dinámico) -->
+                    <h2 id="c2-curso-display" class="text-xl font-black text-slate-800 tracking-tight mb-1">
+                        Curso Avanzado
+                    </h2>
+                    <!-- Módulo -->
+                    <p class="text-slate-400 font-bold text-sm mb-6">Módulo #2</p>
+
+                    <!-- Lista de Datos Clave -->
+                    <div class="space-y-4">
+                        <!-- Fila: Calendario -->
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                                <span class="text-slate-500 font-medium">Calendario</span>
+                            </div>
+                            <span id="c2-semana-display" class="text-slate-800 font-extrabold text-base">Semana 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer de la Tarjeta (Total Alumnos) -->
+                <div class="bg-[#f3f7fc] px-6 py-4 flex items-center justify-between border-t border-slate-100">
+                    <span class="text-slate-500 font-semibold text-sm">Total Alumnos:</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-slate-800 font-bold text-sm shadow-sm border border-slate-100">
+                        <svg class="w-4 h-4 text-amber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span id="c2-alumnos-display">11 Alumnos</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- TARJETA 3: SPEAKING RECOVERY (Tema Verde/Menta) -->
+            <div class="bg-white rounded-[24px] shadow-sm border border-slate-100 overflow-hidden flex flex-col justify-between min-h-[320px] transition-all duration-300 hover:shadow-md">
+                <div class="p-6 flex-grow">
+                    <!-- Insignia / Badge Superior (Dinámica) -->
+                    <span id="c3-badge-display" class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-extrabold bg-emerald-50 text-emerald-700 uppercase tracking-wider mb-4">
+                        SPEAKING RECOVERY
+                    </span>
+                    <!-- Título del Curso (Dinámico) -->
+                    <h2 id="c3-curso-display" class="text-xl font-black text-slate-800 tracking-tight mb-1">
+                        Curso Recuperación
+                    </h2>
+                    <!-- Módulo -->
+                    <p class="text-slate-400 font-bold text-sm mb-6">Módulo #2</p>
+
+                    <!-- Lista de Datos Clave -->
+                    <div class="space-y-4">
+                        <!-- Fila: Calendario -->
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                                <span class="text-slate-500 font-medium">Calendario</span>
+                            </div>
+                            <span id="c3-semana-display" class="text-slate-800 font-extrabold text-base">Semana 4</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer de la Tarjeta (Total Alumnos) -->
+                <div class="bg-[#f3f7fc] px-6 py-4 flex items-center justify-between border-t border-slate-100">
+                    <span class="text-slate-500 font-semibold text-sm">Total Alumnos:</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-slate-800 font-bold text-sm shadow-sm border border-slate-100">
+                        <svg class="w-4 h-4 text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span id="c3-alumnos-display">8 Alumnos</span>
+                    </span>
+                </div>
+            </div>
+
+            <!-- TARJETA 4: GRUPO DUPLICADO (Tema Púrpura/Violeta - Clon de Grupo 1) -->
+            <div class="bg-white rounded-[24px] shadow-sm border border-slate-100 overflow-hidden flex flex-col justify-between min-h-[320px] transition-all duration-300 hover:shadow-md">
+                <div class="p-6 flex-grow">
+                    <!-- Insignia / Badge Superior (Dinámica) -->
+                    <span id="c4-badge-display" class="inline-flex items-center px-3 py-1.5 rounded-lg text-xs font-extrabold bg-purple-50 text-purple-700 uppercase tracking-wider mb-4">
+                        GENERACIÓN #28
+                    </span>
+                    <!-- Título del Curso (Dinámico) -->
+                    <h2 id="c4-curso-display" class="text-xl font-black text-slate-800 tracking-tight mb-1">
+                        Curso: A2 to B1
+                    </h2>
+                    <!-- Módulo -->
+                    <p class="text-slate-400 font-bold text-sm mb-6">Módulo #4</p>
+
+                    <!-- Lista de Datos Clave -->
+                    <div class="space-y-4">
+                        <!-- Fila: Calendario -->
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                                <span class="text-slate-500 font-medium">Calendario</span>
+                            </div>
+                            <span id="c4-semana-display" class="text-slate-800 font-extrabold text-base">Semana 2</span>
+                        </div>
+                        <!-- Fila: Nivel Asignado -->
+                        <div class="flex items-center justify-between text-sm">
+                            <div class="flex items-center gap-2">
+                                <span class="w-2.5 h-2.5 rounded-full bg-blue-600"></span>
+                                <span class="text-slate-500 font-medium">Nivel Asignado</span>
+                            </div>
+                            <span class="text-slate-800 font-extrabold">A2 to B1 (Pre-Intermedio)</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Footer de la Tarjeta (Total Alumnos) -->
+                <div class="bg-[#f3f7fc] px-6 py-4 flex items-center justify-between border-t border-slate-100">
+                    <span class="text-slate-500 font-semibold text-sm">Total Alumnos:</span>
+                    <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-white text-slate-800 font-bold text-sm shadow-sm border border-slate-100">
+                        <svg class="w-4 h-4 text-purple-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                        </svg>
+                        <span id="c4-alumnos-display">35 Alumnos</span>
+                    </span>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Consola del Simulador (Control Total Interactiva) -->
+        <div class="bg-slate-900 text-slate-100 rounded-3xl p-6 shadow-xl border border-slate-800">
+            <h3 class="text-sm font-black uppercase tracking-widest text-sky-400 mb-6 flex items-center gap-2">
+                <span class="w-2 h-2 rounded-full bg-sky-400 animate-ping"></span>
+                Consola de Simulación Activa
+            </h3>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <!-- Controles Tarjeta 1 -->
+                <div class="space-y-4 bg-slate-800/40 p-4 rounded-2xl border border-slate-800">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-2">Grupo 1 (Rosa/Rojo)</h4>
+                    
+                    <!-- Dropdown Dinámico: Nombre del Grupo (Generaciones 1 - 200) -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c1-nombre-select">Nombre del Grupo:</label>
+                        <select id="c1-nombre-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <!-- Las opciones de la generación 1 a 200 se generan dinámicamente mediante JS -->
+                        </select>
+                    </div>
+
+                    <!-- Dropdown: Curso / Nivel -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c1-curso-select">Curso / Nivel:</label>
+                        <select id="c1-curso-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="Curso: B1 a B2" selected>Curso: B1 a B2</option>
+                            <option value="Curso: A2 to B1">Curso: A2 to B1</option>
+                            <option value="Curso: A0 to A1">Curso: A0 to A1</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c1-semana-select">Calendario (Semana):</label>
+                        <select id="c1-semana-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="1">Semana 1</option>
+                            <option value="2">Semana 2</option>
+                            <option value="3" selected>Semana 3</option>
+                            <option value="4">Semana 4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c1-alumnos-input">Cantidad de Alumnos:</label>
+                        <input type="number" id="c1-alumnos-input" value="40" oninput="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                    </div>
+                </div>
+
+                <!-- Controles Tarjeta 2 -->
+                <div class="space-y-4 bg-slate-800/40 p-4 rounded-2xl border border-slate-800">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-2">Grupo 2 (Ámbar)</h4>
+                    
+                    <!-- Dropdown: Nombre del Grupo -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c2-nombre-select">Nombre del Grupo:</label>
+                        <select id="c2-nombre-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="ADV. SPOKEN COURSE" selected>Adv. Spoken Course</option>
+                            <option value="BUSINESS ENGLISH">Business English</option>
+                            <option value="INTENSIVE SPEAKING">Intensive Speaking</option>
+                        </select>
+                    </div>
+
+                    <!-- Dropdown: Curso / Nivel -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c2-curso-select">Curso / Nivel:</label>
+                        <select id="c2-curso-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="Curso Avanzado" selected>Curso Avanzado</option>
+                            <option value="Curso Intermedio">Curso Intermedio</option>
+                            <option value="Curso de Negocios">Curso de Negocios</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c2-semana-select">Calendario (Semana):</label>
+                        <select id="c2-semana-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="1">Semana 1</option>
+                            <option value="2">Semana 2</option>
+                            <option value="3">Semana 3</option>
+                            <option value="4" selected>Semana 4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c2-alumnos-input">Cantidad de Alumnos:</label>
+                        <input type="number" id="c2-alumnos-input" value="11" oninput="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                    </div>
+                </div>
+
+                <!-- Controles Tarjeta 3 -->
+                <div class="space-y-4 bg-slate-800/40 p-4 rounded-2xl border border-slate-800">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-2">Grupo 3 (Verde)</h4>
+                    
+                    <!-- Dropdown: Nombre del Grupo -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c3-nombre-select">Nombre del Grupo:</label>
+                        <select id="c3-nombre-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="SPEAKING RECOVERY" selected>Speaking Recovery</option>
+                            <option value="GRAMMAR RECOVERY">Grammar Recovery</option>
+                            <option value="FLUENCY BOOSTER">Fluency Booster</option>
+                        </select>
+                    </div>
+
+                    <!-- Dropdown: Curso / Nivel -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c3-curso-select">Curso / Nivel:</label>
+                        <select id="c3-curso-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="Curso Recuperación" selected>Curso Recuperación</option>
+                            <option value="Taller de Fluidez">Taller de Fluidez</option>
+                            <option value="Gramática Aplicada">Gramática Aplicada</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c3-semana-select">Calendario (Semana):</label>
+                        <select id="c3-semana-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="1">Semana 1</option>
+                            <option value="2">Semana 2</option>
+                            <option value="3">Semana 3</option>
+                            <option value="4" selected>Semana 4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c3-alumnos-input">Cantidad de Alumnos:</label>
+                        <input type="number" id="c3-alumnos-input" value="8" oninput="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                    </div>
+                </div>
+
+                <!-- Controles Tarjeta 4 (Duplicado del Grupo 1) -->
+                <div class="space-y-4 bg-slate-800/40 p-4 rounded-2xl border border-slate-800">
+                    <h4 class="text-xs font-bold text-slate-400 uppercase tracking-wider border-b border-slate-800 pb-2">Grupo 4 (Púrpura)</h4>
+                    
+                    <!-- Dropdown Dinámico: Nombre del Grupo (Generaciones 1 - 200) -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c4-nombre-select">Nombre del Grupo:</label>
+                        <select id="c4-nombre-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <!-- Las opciones de la generación 1 a 200 se generan dinámicamente mediante JS -->
+                        </select>
+                    </div>
+
+                    <!-- Dropdown: Curso / Nivel -->
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c4-curso-select">Curso / Nivel:</label>
+                        <select id="c4-curso-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="Curso: B1 a B2">Curso: B1 a B2</option>
+                            <option value="Curso: A2 to B1" selected>Curso: A2 to B1</option>
+                            <option value="Curso: A0 to A1">Curso: A0 to A1</option>
+                        </select>
+                    </div>
+
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c4-semana-select">Calendario (Semana):</label>
+                        <select id="c4-semana-select" onchange="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                            <option value="1">Semana 1</option>
+                            <option value="2" selected>Semana 2</option>
+                            <option value="3">Semana 3</option>
+                            <option value="4">Semana 4</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-xs text-slate-400 mb-1" for="c4-alumnos-input">Cantidad de Alumnos:</label>
+                        <input type="number" id="c4-alumnos-input" value="35" oninput="actualizarValores()" class="w-full bg-slate-800 border border-slate-700 rounded-lg px-2.5 py-1.5 text-xs text-white focus:outline-none focus:border-sky-500">
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Script de Lógica Interactiva -->
+    <script>
+        // Función para poblar dinámicamente los selectores del Grupo 1 y Grupo 4 con generaciones de la 1 a la 200
+        function inicializarSelectorGeneraciones() {
+            const select1 = document.getElementById('c1-nombre-select');
+            const select4 = document.getElementById('c4-nombre-select');
+            
+            // Poblar select del Grupo 1
+            if (select1) {
+                select1.innerHTML = '';
+                for (let i = 1; i <= 200; i++) {
+                    const opt = document.createElement('option');
+                    opt.value = `GENERACIÓN #${i}`;
+                    opt.innerText = `Generación #${i}`;
+                    if (i === 27) opt.selected = true; // Default Gen 27 para Grupo 1
+                    select1.appendChild(opt);
+                }
+                const optExtra = document.createElement('option');
+                optExtra.value = "GRUPO NUEVO INICIAL";
+                optExtra.innerText = "Grupo Nuevo Inicial";
+                select1.appendChild(optExtra);
+            }
+
+            // Poblar select del Grupo 4 (Duplicado)
+            if (select4) {
+                select4.innerHTML = '';
+                for (let i = 1; i <= 200; i++) {
+                    const opt = document.createElement('option');
+                    opt.value = `GENERACIÓN #${i}`;
+                    opt.innerText = `Generación #${i}`;
+                    if (i === 28) opt.selected = true; // Default Gen 28 para Grupo 4
+                    select4.appendChild(opt);
+                }
+                const optExtra = document.createElement('option');
+                optExtra.value = "GRUPO NUEVO INICIAL";
+                optExtra.innerText = "Grupo Nuevo Inicial";
+                select4.appendChild(optExtra);
+            }
+        }
+
+        function actualizarValores() {
+            // Obtener valores de la consola
+            const c1Nombre = document.getElementById('c1-nombre-select').value;
+            const c1Curso = document.getElementById('c1-curso-select').value;
+            const c1Semana = document.getElementById('c1-semana-select').value;
+            const c1Alumnos = document.getElementById('c1-alumnos-input').value;
+
+            const c2Nombre = document.getElementById('c2-nombre-select').value;
+            const c2Curso = document.getElementById('c2-curso-select').value;
+            const c2Semana = document.getElementById('c2-semana-select').value;
+            const c2Alumnos = document.getElementById('c2-alumnos-input').value;
+
+            const c3Nombre = document.getElementById('c3-nombre-select').value;
+            const c3Curso = document.getElementById('c3-curso-select').value;
+            const c3Semana = document.getElementById('c3-semana-select').value;
+            const c3Alumnos = document.getElementById('c3-alumnos-input').value;
+
+            const c4Nombre = document.getElementById('c4-nombre-select').value;
+            const c4Curso = document.getElementById('c4-curso-select').value;
+            const c4Semana = document.getElementById('c4-semana-select').value;
+            const c4Alumnos = document.getElementById('c4-alumnos-input').value;
+
+            // Vincular y renderizar en la Tarjeta 1
+            document.getElementById('c1-badge-display').innerText = c1Nombre;
+            document.getElementById('c1-curso-display').innerText = c1Curso;
+            document.getElementById('c1-semana-display').innerText = `Semana ${c1Semana}`;
+            document.getElementById('c1-alumnos-display').innerText = `${c1Alumnos} Alumnos`;
+
+            // Vincular y renderizar en la Tarjeta 2
+            document.getElementById('c2-badge-display').innerText = c2Nombre;
+            document.getElementById('c2-curso-display').innerText = c2Curso;
+            document.getElementById('c2-semana-display').innerText = `Semana ${c2Semana}`;
+            document.getElementById('c2-alumnos-display').innerText = `${c2Alumnos} Alumnos`;
+
+            // Vincular y renderizar en la Tarjeta 3
+            document.getElementById('c3-badge-display').innerText = c3Nombre;
+            document.getElementById('c3-curso-display').innerText = c3Curso;
+            document.getElementById('c3-semana-display').innerText = `Semana ${c3Semana}`;
+            document.getElementById('c3-alumnos-display').innerText = `${c3Alumnos} Alumnos`;
+
+            // Vincular y renderizar en la Tarjeta 4
+            document.getElementById('c4-badge-display').innerText = c4Nombre;
+            document.getElementById('c4-curso-display').innerText = c4Curso;
+            document.getElementById('c4-semana-display').innerText = `Semana ${c4Semana}`;
+            document.getElementById('c4-alumnos-display').innerText = `${c4Alumnos} Alumnos`;
+        }
+
+        // Ejecutar inicialización para cargar datos predeterminados correctos
+        window.onload = function() {
+            inicializarSelectorGeneraciones();
+            actualizarValores();
+        };
+    </script>
+</body>
+</html>
